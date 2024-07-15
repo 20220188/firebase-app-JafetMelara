@@ -1,11 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from 'firebase/storage';
-import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID } from '@env';
-// Your web app's Firebase configuration
+import { getAuth } from 'firebase/auth';  // Añadir esta línea
 
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBxX8GDhEgEMYNKc4b53GyNVsDKcQBF4rE",
   authDomain: "practica-firebase-20220188.firebaseapp.com",
@@ -18,25 +15,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-if (app) {
-    console.log('Firebase initialized successfully');
-  } else {
-    console.log('Firebase initialization failed');
-  }
-  
-  const database = getFirestore(app);
-  if (database) {
-    console.log('Firestore initialized correctly');
-  } else {
-    console.log('Firestore initialization failed');
-  }
-  
-  const storage = getStorage(app);
-  
-  if (storage) {
-    console.log('storage initialized correctly');
-  } else {
-    console.log('storage initialization failed');
-  }
-  
-  export { database,storage };
+const database = getFirestore(app);
+const storage = getStorage(app);
+const auth = getAuth(app);  // Añadir esta línea
+
+export { database, storage, auth };
